@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FaBars, FaShoppingBag, FaUser } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
 import SearchBar from "./SearchBar";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -17,26 +18,25 @@ const Header = () => {
             {" "}
             {toggleMenu ? <FaBars /> : <RxCross1 />}{" "}
           </div>
-          <div className="text-gray-200 text-2xl lg:text-3xl  font-semibold">Organic-Shop</div>
+          <div className="text-gray-200 text-2xl lg:text-3xl  font-semibold cursor-pointer"> <Link to='/home'>Organic-Shop</Link> </div>
           {/* <div className="hidden lg:flex">
             <SearchBar />
           </div> */}
           <div className='hidden md:flex text-white text-lg space-x-6'>
-            <a href="" className="hover:text-gray-300">Home</a>
-            <a href="" className="hover:text-gray-300">Shop</a>
-            <a href="" className="hover:text-gray-300">Orders</a>
-            <a href="" className="hover:text-gray-300">Admin</a>
+            <Link to='/home'><a href="" className="hover:text-gray-300">Home</a></Link>
+            <Link to='/shop'><a href="" className="hover:text-gray-300">Shop</a></Link>
+            <Link to='/order'><a href="" className="hover:text-gray-300">Orders</a></Link>
+            <Link to='/admin'><a href="" className="hover:text-gray-300">Admin</a></Link>
           </div>
           <div className="flex space-x-4 md:space-x-7">
-            <div className="text-white text-2xl flex relative">
-              <FaShoppingBag />
+            <div className="text-white text-2xl flex relative cursor-pointer hover:text-gray-300">
+            <Link to='/cart'>  <FaShoppingBag /></Link>
               <span className="text-sm bg-purple-800 rounded-full p-[1px] ml-5 text-gray-300 font-bold absolute ">
                 0
-              </span>{" "}
+              </span>
             </div>
-            <span className="text-white text-2xl">
-              {" "}
-              <FaUser />{" "}
+            <span className="text-white text-2xl cursor-pointer hover:text-gray-300"> 
+              <Link to='/signUp' ><FaUser /></Link>
             </span>
           </div>
         </div> 

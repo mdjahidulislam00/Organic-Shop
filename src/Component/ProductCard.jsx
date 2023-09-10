@@ -1,9 +1,10 @@
 import 'react';
+import { Link } from 'react-router-dom';
 
 const ProductCard = (props) => {
     const{name, imageUrl, description, price} = props.product;
   return (
-    <div className="border rounded-lg overflow-hidden cursor-pointer hover:shadow-lg duration-200">
+   <Link to='/productDetails'> <div className="border rounded-lg overflow-hidden cursor-pointer hover:shadow-lg duration-200">
       <img
         src={imageUrl}
         alt={name}
@@ -23,6 +24,7 @@ const ProductCard = (props) => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 
