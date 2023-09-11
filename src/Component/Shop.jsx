@@ -49,18 +49,10 @@ const Shop = () => {
   ];
   return (
     <div className="container mx-auto my-3">
-      <h3 className="text-xl lg:text-3xl p-4 lg:p-7 font-bold"> <u>Electronic:/</u> </h3>
-      <div className="mx-auto grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
+      <h3 className="text-xl lg:text-3xl p-4 lg:p-7 font-bold"> <u>Electronic:</u> </h3>
+      <div className="mx-auto grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4 lg:pb-5 border-b-4 border-purple-500">
         {products.map((product) => (
           <div key={product.id} className="">
-            <ProductCard product={product} />
-          </div>
-        ))}
-      </div>
-      <h3 className="text-xl lg:text-3xl p-7 font-bold"> <u>Home Apliance:/</u> </h3>
-      <div className="mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {products.map((product) => (
-          <div key={product.id} className="p-4">
             <ProductCard product={product} />
           </div>
         ))}

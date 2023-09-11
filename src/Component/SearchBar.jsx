@@ -7,12 +7,12 @@ const SearchBar = () => {
         <input
             type="text"
             placeholder="Search..."
-            className="lg:w-52 h-12 p-2 text-lg rounded-l-md border-blue-500 appearance-none bg-white border-none text-gray-700 leading-tight focus:outline-none"
+            className="lg:w-96 h-12 p-2 text-lg rounded-l-md border-blue-500 appearance-none bg-white border-none text-gray-700 leading-tight focus:outline-none"
             value=""
         />
         <button
             type="submit"
-            className="h-12 p-2 text-lg lg:text-lg text-white rounded-r-md bg-purple-800 hover:bg-purple-700 border-purple-500 "
+            className="lg:w-32 h-12 p-2 text-lg lg:text-lg text-white rounded-r-md bg-purple-800 hover:bg-purple-700 border-purple-500 "
         >
             Search
         </button>

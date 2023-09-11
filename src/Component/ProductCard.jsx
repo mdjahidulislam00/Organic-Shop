@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 const ProductCard = (props) => {
     const{name, imageUrl, description, price} = props.product;
   return (
-   <Link to='/productDetails'> <div className="border rounded-lg overflow-hidden cursor-pointer hover:shadow-lg duration-200">
-      <img
+   <div className="border rounded-lg overflow-hidden cursor-pointer hover:shadow-lg duration-200">
+     <Link to='/productDetails'>  <img
         src={imageUrl}
         alt={name}
-        className="w-full h-32 md:h-48 object-cover object-center"
-      />
+        className="w-full h-32 md:h-48 lg:h-60 object-cover object-center"
+      /></Link>
       <div className="px-4 py-1 text-center">
         <h2 className="text-gray-900 font-bold text-lg mb-1">{name}</h2>
         <p className="text-gray-600 text-sm">{description}</p>
@@ -24,7 +24,6 @@ const ProductCard = (props) => {
         </div>
       </div>
     </div>
-    </Link>
   );
 };
 
