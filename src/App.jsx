@@ -6,12 +6,11 @@ import SignUpPage from './pages/SignUpPage'
 import AdminPage from './pages/AdminPage'
 import Shop from './Component/Shop'
 import ProductDetails from './Component/ProductDetails'
-import CheckeOut from './Component/CheckeOut'
-import ProductCheckOutCard from './Component/ProductCheckOutCard'
 import { Route, Routes } from 'react-router-dom'
 import PrivateRoute from './Component/PrivateRoute'
 import NoMatchRoute from './Component/NoMatchRoute'
 import { createContext, useState } from 'react'
+import CartPage from './pages/CartPage'
 
 export const currentUser = createContext();
 
@@ -24,12 +23,12 @@ const App = () => {
         <Route path="*" element={ <HomePage/>} />
         <Route path="/shop" element={ <Shop/>} />
         <Route path="/*" element={ <PrivateRoute />}>
-          <Route path="order" element={<CheckeOut />} />
+          <Route path="order" element={<CartPage />} />
           <Route path="admin" element={<AdminPage/>} />
-          <Route path="cart" element={<ProductCheckOutCard />} />
+          <Route path="cart" element={<CartPage />} />
         </Route>
         <Route path="/signUp" element={ <SignUpPage/>} />
-        <Route path="/productDetails" element={ <ProductDetails/>} />
+        <Route path="/productDetails/:id" element={ <ProductDetails/>} />
         <Route path="*" element={ <NoMatchRoute/>} />
       </Routes>
       <Footer/>

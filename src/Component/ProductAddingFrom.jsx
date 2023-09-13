@@ -9,6 +9,7 @@ const ProductAddingFrom = () => {
     quantity: "",
     picture: "",
   });
+  
   //handel InputChange
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -19,8 +20,19 @@ const ProductAddingFrom = () => {
   };
   //handel From
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission or validation here
+    //Data Send to server using Express js
+    fetch('http://localhost:5000/addProduct', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(result =>{
+      console.log(result)
+    })
+
+    e.preventDefault(); 
     console.log("Form Data:", formData);
   };
   return (

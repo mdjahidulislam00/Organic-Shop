@@ -1,66 +1,106 @@
 import "react";
+import { useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
-import { FaMinus, FaPlus } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
+import { FaSpinner } from "react-icons/fa";
+import { useParams } from "react-router-dom";
+import Shop from "./Shop";
 
 const ProductDetails = () => {
+  const { id } = useParams();
+  const [productDetails, setProductDetails] = useState();
+
+  //Find product using id
+  useEffect(() => {
+    fetch(`http://localhost:5000/getProductById/${id}`)
+      .then((res) => res.json())
+      .then((data) => setProductDetails(data));
+  }, [id]);
+
   return (
-    <div className="mx-auto bg-gray-200 py-5 lg:flex">
-      <div className=" m-5 lg:basis-5/12">
-        <img
-          className="rounded-lg"
-          src="https://cdn.pixabay.com/photo/2018/01/16/10/18/headphones-3085681_1280.jpg"
-          alt="product Image"
-        />
-      </div>
-      <div className="mx-5 lg:mt-10 lg:basis-7/12">
-        <div className="name flex justify-between">
-          <div className="text-xl font-bold text-purple-600">
-            iphone 15 Pro Max
-          </div>
-          <div className="text-purple-500 flex items-center">
-            {" "}
-            InStoke <FaLocationDot />
-          </div>
-        </div>
-        <div className="ratting-brand flex justify-between mt-2">
-          <div>
-            {" "}
-            <span className="font-bold">Brand:</span> iphone
-          </div>
-          <div className="flex items-center">
-            <span className="text-yellow-500 flex">
-              <AiFillStar /> <AiFillStar />
-              <AiFillStar />
-              <AiFillStar />
-            </span>
-            <span>(120)</span>
-          </div>
-        </div>
-        <div className="price flex justify-between items-center mt-6 lg:mt-10  ">
-          <div className="text-2xl font-bold  text-red-500 ">$640</div>
-          <div className="bg-purple-500 rounded flex space-x-2 items-center">
-            <div className="bg-purple-400 p-2 lg:p-3 rounded hover:bg-purple-700">
-              {" "}
-              <FaMinus />
+    <div className=" bg-slate-100 border rounded-lg m-4">
+      {productDetails ? (
+        <div className="container mx-auto">
+          <div className=" main-Section lg:flex">
+            <div className="flex items-center justify-center m-5 lg:basis-5/12">
+              <img
+                className="rounded-lg shadow-lg lg:w-96 lg:h- m-4"
+                src={productDetails.img}
+                alt="product Image"
+              />
             </div>
-            <div className="rounded px-1 lg:px-2 text-xl font-bold text-white">1</div>
-            <div className="bg-purple-400 p-2 lg:p-3 rounded hover:bg-purple-700">
-              {" "}
-              <FaPlus />{" "}
+            <div className="lg:basis-6/12 p-5">
+              <div className="name flex-col justify-center">
+                <div className="text-xl lg:text-2xl font-bold text-purple-600">
+                  {productDetails.name}
+                </div>
+                <div className="flex items-center mt-2">
+                  <div className="text-yellow-500 flex text-lg">
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                  </div>
+                  <div className="text-sm pt-2 text-gray-500">(120)</div>
+                </div>
+              </div>
+              <div className=" mt-8 w-96 ">
+                <h3 className="text-xl font-semibold text-center lg:text-left my-3 border-b-4 border-purple-400">
+                  Specifications:
+                </h3>
+                <div className="grid grid-cols-2 text-center lg:text-left  gap-2">
+                  {/* Category */}
+                  <div className=" text-xl font-bold py-2">Category :</div>
+                  <div className="text-gray-800 text-lg font-semibold py-2">
+                    {productDetails.category}
+                  </div>
+                  {/* Seller */}
+                  <div className=" text-xl font-bold py-2">Seller :</div>
+                  <div className="text-gray-800 text-lg font-semibold py-2">
+                    {productDetails.seller}
+                  </div>
+                  {/* Stock */}
+                  <div className=" text-xl font-bold py-2">Stoke :</div>
+                  <div className="text-gray-800 text-lg font-semibold py-2">
+                    {productDetails.stock}
+                  </div>
+                  {/* Shipping */}
+                  <div className=" text-xl font-bold py-2">Shipping cost :</div>
+                  <div className="text-gray-800 text-lg font-semibold py-2">
+                    {productDetails.shipping}
+                  </div>
+                </div>
+                <div className="flex justify-around mt-6 lg:mt-12 ">
+                  <button className="bg-blue-500 text-xl hover:bg-blue-700 text-white  py-2 px-7 lg:px-12 rounded">
+                    Add to Cart
+                  </button>
+                  <button className="bg-purple-500 text-xl hover:bg-purple-700 text-white py-2 px-7 lg:px-12 rounded">
+                    Buy Now
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="text-2xl font-bold  text-red-500">$640</div>
+          <div className="decription">
+            <div className="bg-white rounded-md m-10 p-5">
+              <span className="text-2xl font-bold pb-5">Description</span>
+              <p className="text-justify text-lg">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Ratione, laboriosam? Totam sit, maiores porro culpa harum facere
+                animi tempore asperiores ex aspernatur fugit possimus quisquam
+                velit repudiandae accusamus nemo, sequi modi laborum mollitia
+                dolore vel necessitatibus expedita illum? Optio, natus?
+                Accusantium odit reprehenderit culpa mollitia ducimus rem fugit
+                maiores ut.
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="flex justify-around  mt-6 lg:mt-16">
-          <button className="bg-blue-500 text-xl hover:bg-blue-700 text-white  py-2 px-7 lg:px-12 rounded">
-            Add to Cart
-          </button>
-          <button className="bg-purple-500 text-xl hover:bg-purple-700 text-white py-2 px-7 lg:px-12 rounded">
-            Buy Now
-          </button>
+      ) : (
+        <div className="container mx-auto flex items-center justify-center py-10 text-7xl text-purple-800">
+          {" "}
+          <FaSpinner />{" "}
         </div>
-      </div>
+      )}
     </div>
   );
 };
