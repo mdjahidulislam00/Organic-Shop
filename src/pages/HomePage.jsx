@@ -1,12 +1,11 @@
 import 'react'
 import Shop from '../Component/Shop'
-import Slider from '../Component/Slider'
-import SearchBar from '../Component/SearchBar'
+import SliderShow from '../Component/SliderShow'
 
 const HomePage = () => {
   return (
     <div>
-        <SearchBar />
+        <SliderShow />
         <Shop />
     </div>
   )
