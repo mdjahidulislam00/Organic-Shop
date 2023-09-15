@@ -1,4 +1,5 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const ProductAddingFrom = () => {
   const [formData, setFormData] = useState({
@@ -9,14 +10,27 @@ const ProductAddingFrom = () => {
     quantity: "",
     picture: "",
   });
+  console.log(formData)
+    // //handel Image upload to imgbb and get a live link
+    // const handleImageUpload = (e) => {
+    //   const imageData = new FormData();
+    //   imageData.set('key', '19b0d55a64e603890c58aee7a1a4c2c8');
+    //   imageData.append('image', e.target.files[0]);
   
+    //   axios.post('https://api.imgbb.com/1/upload', imageData)
+    //   .then(function (response) {
+    //     // setFormData({...formData, picture: response.data.data.display_url});
+    //     console.log(response.data.data.display_url)
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error)
+    //   })
+  
+    // }
   //handel InputChange
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({...formData, [name]: value});
   };
   //handel From
   const handleSubmit = (e) => {
@@ -33,7 +47,6 @@ const ProductAddingFrom = () => {
     })
 
     e.preventDefault(); 
-    console.log("Form Data:", formData);
   };
   return (
     <div className="max-w-md lg:container  mx-auto bg-white p-8 rounded shadow-md">

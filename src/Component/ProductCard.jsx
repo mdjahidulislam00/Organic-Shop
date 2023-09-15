@@ -44,7 +44,7 @@ const ProductCard = (props) => {
           </div>
         </div> </Link>
         <div className="my-1 mx-2">
-            <button className="w-full h-10 rounded-lg bg-purple-500 text-white text-md font-semibold hover:bg-purple-700 duration-200">
+            <button onClick={ ()=> props.AddProductToCart (props.items)} className="w-full h-10 rounded-lg bg-purple-500 text-white text-md font-semibold hover:bg-purple-700 duration-200">
               Add to Cart
             </button>
           </div>

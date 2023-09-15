@@ -7,10 +7,10 @@ import { currentUser } from "../App";
 import { getAuth, signOut } from "firebase/auth";
 import { FaGear, FaShop } from "react-icons/fa6";
 import SearchBar from "./SearchBar";
+import { getShoppingCart } from "./SaveAndRetriveDataLocalstorage";
 
 const Header = () => {
   const [currentLogInUser, setCurrentLogInUser] = useContext(currentUser);
-  console.log(currentLogInUser);
   const [toggleMenu, setToggleMenu] = useState(true);
   //LogOut Hendler
   const handelSignOutUser = () => {
@@ -23,6 +23,9 @@ const Header = () => {
         // An error happened.
       });
   };
+  ///get Cart information
+  const cartInfo = getShoppingCart();
+  console.log(cartInfo);
   return (
     <div className="bg-purple-500 sticky top-0 z-10">
       <nav className="w-full shadow-md shadow-gray-500">

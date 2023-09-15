@@ -1,43 +1,77 @@
 import "react";
-import { FaEdit } from "react-icons/fa";
-import { RiDeleteBin2Fill } from "react-icons/ri";
+import { useEffect, useState } from "react";
 
 const AdminProductShow = () => {
-  return (
-    <div className="container mx-auto p-4 lg:pb-52">
-        <h3 className="text-3xl font-semibold py-2 text-center">Manage Your Products</h3>
+  const [allAdminProducts, setAdminProducts] = useState();
+  const {id, name} = allAdminProducts;
+  console.log(name)
+  //get all Product fetch
+  useEffect(()=>{
+    const fetchData = async () =>{
+      const res = await fetch('http://localhost:5000/getAllProducts');
+      const data = await res.json();
+      setAdminProducts(data)
+    }
+    fetchData();
+  }, [ ]);
+
+   //handel Delete items
+   const handelDeleteItem = (event,id) => {
+    console.log(event.target.parentNode)
+    // //Data Send to server using Express js
+    fetch(`http://localhost:5000/deleteProductById/${id}`, {
+      method: 'DELETE',
+    })
+    .then(res => 
+        {res ? event.target.parentNode.parentNode.className='hidden' : console.log(res)}  
+      )
+    .catch(err => console.log(err))
+  };
+
+    //  //handel Edit items
+    //  const handelEditItem = (id) => {
+    //   // //Data Send to server using Express js
+    //   fetch(`http://localhost:5000/deleteProductById/${id}`, {
+    //     method: '' ,
+    //   })
+    //   .then(res => 
+    //        console.log(res)  
+    //     )
+    //   .catch(err => console.log(err))
+    // };
+ return (
+      <div className="container mx-auto p-4">
+      <h2 className="text-2xl font-semibold mb-4">Product Management</h2>
+      <h2 className="text-3xl font-semibold mb-4">Total-  {allAdminProducts && allAdminProducts.length}</h2>
       <div className="overflow-x-auto">
-        <table className="min-w-full table-auto border-collapse border border-gray-300">
+        <table className="min-w-full">
           <thead>
             <tr>
-              <th className="px-4 py-2 bg-gray-200 border border-gray-300 text-gray-700 font-bold">ID</th>
-              <th className="px-4 py-2 bg-gray-200 border border-gray-300 text-gray-700 font-bold">Category</th>
-              <th className="px-4 py-2 bg-gray-200 border border-gray-300 text-gray-700 font-bold">Name</th>
-              <th className="px-4 py-2 bg-gray-200 border border-gray-300 text-gray-700 font-bold">Company</th>
-              <th className="px-4 py-2 bg-gray-200 border border-gray-300 text-gray-700 font-bold">Price</th>
-              <th className="px-4 py-2 bg-gray-200 border border-gray-300 text-gray-700 font-bold">Quantity</th>
-              <th className="px-4 py-2 bg-gray-200 border border-gray-300 text-gray-700 font-bold">Action</th>
+              <th className="px-4 py-2">Category</th>
+              <th className="px-4 py-2">Name</th>
+              <th className="px-4 py-2">Price</th>
+              <th className="px-4 py-2">Stock</th>
+              <th className="px-4 py-2">Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="px-4 py-2 border border-gray-300">1</td>
-              <td className="px-4 py-2 border border-gray-300">Electronic</td>
-              <td className="px-4 py-2 border border-gray-300">Redmi Note 12</td>
-              <td className="px-4 py-2 border border-gray-300">Xiomi</td>
-              <td className="px-4 py-2 border border-gray-300">20</td>
-              <td className="px-4 py-2 border border-gray-300">30</td>
-              <td className="px-3 py-2 flex items-center justify-center ">
-              <button className="bg-purple-500 hover:bg-purple-700 text-white font-semibold py-1 px-2 rounded flex items-center mr-3">
-                   <span>Edit</span>
-                   <span className="text-xl ml-2"> <FaEdit /> </span>
-                </button>
-                <button className="bg-red-500 hover:bg-red-700 text-white font-semibold py-1 px-2 rounded flex  items-center">
-                   <span>Delete</span>
-                   <span className="text-xl ml-2"> <RiDeleteBin2Fill /> </span>
-                </button>
-              </td>
-            </tr>
+            { allAdminProducts &&
+             allAdminProducts.map((allProduct) => (
+              <tr key={allProduct.id}>
+                <td className="border px-4 py-2">{allProduct.category}</td>
+                <td className="border px-4 py-2">{allProduct.name}</td>
+                <td className="border px-4 py-2">${allProduct.price}</td>
+                <td className="border px-4 py-2">{allProduct.stock}</td>
+                <td className="border px-4 py-2">
+                  <button onClick={() => handelEditItem(event,allProduct.id)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-1">
+                    Edit
+                  </button>
+                  <button onClick={() => handelDeleteItem(event,allProduct.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mx-1">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

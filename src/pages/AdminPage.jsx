@@ -9,7 +9,7 @@ const AdminPage = () => {
   const[showInfo, setShowInfo] = useState()
   return (
     <div className="">
-      <nav className="bg-purple-600 p-4">
+      <nav className="bg-purple-600 p-4 sticky top-20">
         <div className="container mx-auto flex items-center">
           <ul className="flex space-x-4 items-center">
             <li onClick={() => setShowInfo(false)} className='flex items-center border rounded-md p-1 hover:bg-purple-300'>

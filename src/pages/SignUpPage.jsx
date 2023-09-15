@@ -173,7 +173,7 @@ const Validation = (userInfo) =>{
               {newUser && (
                 <input
                   onChange={handelInput}
-                  className="w-56 lg:w-52 lg:h-10 rounded-lg  px-2 shadow-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none text-sm lg:text-md text-gray-400"
+                  className="w-56 lg:w-60 lg:h-10 rounded-lg  px-2 shadow-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none text-sm lg:text-md text-gray-400"
                   placeholder="Name"
                   type="text"
                   name="name"
@@ -183,7 +183,7 @@ const Validation = (userInfo) =>{
               <span className="text-sm font-light text-red-500">{validationError.name}</span>
               <input
                 onChange={handelInput}
-                className="w-56 lg:w-52 lg:h-10 rounded-lg  px-2 shadow-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none text-sm lg:text-md text-gray-400"
+                className="w-56 lg:w-60 lg:h-10 rounded-lg  px-2 shadow-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none text-sm lg:text-md text-gray-400"
                 placeholder="Email"
                 type="email"
                 name="email"
@@ -192,7 +192,7 @@ const Validation = (userInfo) =>{
               <span className="text-sm font-light text-red-500">{validationError.email}</span>
               <input
                 onChange={handelInput}
-                className="w-56 lg:w-52 lg:h-10 rounded-lg  px-2 shadow-lg  focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none text-sm lg:text-md text-gray-400 "
+                className="w-56 lg:w-60 lg:h-10 rounded-lg  px-2 shadow-lg  focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none text-sm lg:text-md text-gray-400 "
                 placeholder="Password"
                 type="password"
                 name="password"
@@ -201,7 +201,7 @@ const Validation = (userInfo) =>{
               <span className="text-sm font-light text-red-500">{validationError.password}</span>
               <span className="text-sm font-bold text-red-500">{firebaseError}</span>
               <input
-                className="w-56 lg:w-52 lg:h-10 bg-purple-500 text-white rounded-lg px-5 shadow-lg mt-5 text-md lg:text-lg font-semibold cursor-pointer hover:bg-purple-400"
+                className="w-56 lg:w-60 lg:h-10 bg-purple-500 text-white rounded-lg px-5 shadow-lg mt-5 text-md lg:text-lg font-semibold cursor-pointer hover:bg-purple-400"
                 type="submit"
                 value={newUser ? "Create Account" : "Log In"}
               />
