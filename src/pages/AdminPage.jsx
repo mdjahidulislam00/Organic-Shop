@@ -8,11 +8,19 @@ import { useState } from "react";
 const AdminPage = () => {
   const[showInfo, setShowInfo] = useState()
   return (
-    <div className="">
-      <nav className="bg-purple-600 p-4 sticky top-20">
+    <div className=" sticky top-20 z-30">
+      <nav className="bg-purple-600 p-4">
         <div className="container mx-auto flex items-center">
           <ul className="flex space-x-4 items-center">
-            <li onClick={() => setShowInfo(false)} className='flex items-center border rounded-md p-1 hover:bg-purple-300'>
+            <li onClick={() => setShowInfo(false)} className="flex items-center border rounded-md p-1 hover:bg-purple-300">
+              <a href="#" className="text-white text-sm mr-2">
+                Manage Products{" "}
+              </a>
+              <span className="text-white text-xl">
+                <FaGear />
+              </span>
+            </li>
+            <li onClick={() => setShowInfo(true)} className='flex items-center border rounded-md p-1 hover:bg-purple-300'>
               <a href="#" className="text-white text-sm mr-2">
                 AddProduct{" "}
               </a>
@@ -20,19 +28,11 @@ const AdminPage = () => {
                 <FaPlusCircle />
               </span>
             </li>
-            <li onClick={() => setShowInfo(true)} className="flex items-center border rounded-md p-1 hover:bg-purple-300">
-              <a href="#" className="text-white text-sm mr-2">
-                Manage{" "}
-              </a>
-              <span className="text-white text-xl">
-                <FaGear />
-              </span>
-            </li>
           </ul>
         </div>
       </nav>
       {
-        showInfo ? <AdminProductShow />   : <ProductAddingFrom />
+        showInfo ?<ProductAddingFrom /> : <AdminProductShow /> 
       }
       
     </div>

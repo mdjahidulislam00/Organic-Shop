@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import { FaSpinner } from "react-icons/fa";
 import { useParams } from "react-router-dom";
-import Shop from "./Shop";
 
 const ProductDetails = () => {
-  const { id } = useParams();
+  const {id} = useParams();
+  console.log(id)
   const [productDetails, setProductDetails] = useState();
 
-  //Find product using id
+  // Find product using id
   useEffect(() => {
     fetch(`http://localhost:5000/getProductById/${id}`)
       .then((res) => res.json())
@@ -35,12 +35,15 @@ const ProductDetails = () => {
                 </div>
                 <div className="flex items-center mt-2">
                   <div className="text-yellow-500 flex text-lg">
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
+                    {
+                      productDetails.ratings == 1 && <AiFillStar /> || productDetails.ratings == 2 && <span className="flex"><AiFillStar /><AiFillStar /> </span>
+                      || productDetails.ratings == 3 && <span className="flex"><AiFillStar /><AiFillStar /><AiFillStar /></span>
+                      || productDetails.ratings == 4 && <span className="flex"><AiFillStar /><AiFillStar /><AiFillStar /> <AiFillStar /></span>
+                      || productDetails.ratings == 5 && <span className="flex"><AiFillStar /><AiFillStar /><AiFillStar /> <AiFillStar /> <AiFillStar /></span>
+
+                    }
                   </div>
-                  <div className="text-sm pt-2 text-gray-500">(120)</div>
+                  <div className="text-sm pt-2 text-gray-500">({productDetails.ratingsCount})</div>
                 </div>
               </div>
               <div className=" mt-8 w-96 ">

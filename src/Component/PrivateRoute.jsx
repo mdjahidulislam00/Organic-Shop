@@ -6,7 +6,7 @@ const PrivateRoute = () => {
     const[currentLogInUser, setCurrentLogInUser] = useContext(currentUser);
     const location = useLocation();
   return (
-    currentLogInUser.email ? <Outlet /> : <Navigate to='/signUp' replace state={{from:location}} />
+    currentLogInUser ? <Outlet /> : <Navigate to='/signUp' replace state={{from:location}} />
   )
 }
 
