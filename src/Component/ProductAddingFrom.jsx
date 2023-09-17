@@ -1,5 +1,4 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import AdminNavBar from "./AdminNavBar";
 
 const ProductAddingFrom = () => {
@@ -7,47 +6,49 @@ const ProductAddingFrom = () => {
     category: "",
     name: "",
     companyName: "",
-    price: "",
-    quantity: "",
+    price: "" ,
+    stock: "",
     picture: "",
   });
-  console.log(formData)
-    // //handel Image upload to imgbb and get a live link
-    // const handleImageUpload = (e) => {
-    //   const imageData = new FormData();
-    //   imageData.set('key', '19b0d55a64e603890c58aee7a1a4c2c8');
-    //   imageData.append('image', e.target.files[0]);
-  
-    //   axios.post('https://api.imgbb.com/1/upload', imageData)
-    //   .then(function (response) {
-    //     // setFormData({...formData, picture: response.data.data.display_url});
-    //     console.log(response.data.data.display_url)
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error)
-    //   })
-  
-    // }
+  const [successMessage, setSuccessMessage] = useState("");
+
+console.log(formData)
   //handel InputChange
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({...formData, [name]: value});
   };
+
+
   //handel From
   const handleSubmit = (e) => {
+    e.preventDefault(); 
+
     //Data Send to server using Express js
     fetch('http://localhost:5000/addProduct', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(formData)
     })
-    .then(result =>{
+    .then((result) => {
       console.log(result)
+      if (result) {
+        setSuccessMessage("Product added successfully.");
+        setFormData({
+          category: "",
+          name: "",
+          companyName: "",
+          price: "",
+          stock: "",
+          picture: "",
+        });
+      } else {
+        setSuccessMessage("Failed to add product.");
+      }
     })
-
-    e.preventDefault(); 
+    .catch((err) => {
+      console.log(err);
+    });
   };
   return (
     <>
@@ -56,8 +57,12 @@ const ProductAddingFrom = () => {
       <h2 className="text-3xl font-semibold mb-4 text-center">
         Product Information
       </h2>
+      {successMessage && (
+          <div className="text-4xl my-8 text-green-600 text-center">{successMessage}</div>
+      )}
       <form
         onSubmit={handleSubmit}
+        method="post"
         className="lg:grid lg:grid-cols-3  lg:gap-10"
       >
         <div className="mb-4">
@@ -122,7 +127,7 @@ const ProductAddingFrom = () => {
             Price
           </label>
           <input
-            type="text"
+            type="number"
             id="price"
             name="price"
             value={formData.price}
@@ -138,7 +143,7 @@ const ProductAddingFrom = () => {
             Quantity
           </label>
           <input
-            type="text"
+            type="number"
             id="quantity"
             name="quantity"
             value={formData.quantity}

@@ -1,7 +1,6 @@
 import "react";
 import { useEffect, useState } from "react";
 import AdminNavBar from "./AdminNavBar";
-import { ImSpinner3 } from "react-icons/im";
 import spinner from '../assets/images/rainbow-spinner-loading.gif'
 
 const AdminProductShow = () => {
@@ -13,20 +12,20 @@ const AdminProductShow = () => {
     const fetchData = async () =>{
       const res = await fetch('http://localhost:5000/getAllProducts');
       const data = await res.json();
-      setAdminProducts(data)
+            setAdminProducts(data)
     }
     fetchData();
-  }, [ ]);
+  }, []);
 
 
   //handel Delete items
    const handelDeleteItem = (event,id) => {
-    // //Data Send to server using Express js
+    //Data Send to server using Express js
     fetch(`http://localhost:5000/deleteProductById/${id}`, {
       method: 'DELETE',
     })
     .then(res => 
-        {res ?  event.target.parentNode.parentNode.className='hidden' && alert('Product Deleted SuccessFully') : console.log(res)}
+        { res ?  event.target.parentNode.parentNode.className='hidden' : console.log(res)}
           
       )
     .catch(err => console.log(err))
@@ -34,7 +33,7 @@ const AdminProductShow = () => {
 
     //handel Edit items get from server
      const handelEditItem = (event,id) => {
-      console.log(event,id)
+      event.preventDefault();
       fetch(`http://localhost:5000/getProductById/${id}`)
       .then((res) => res.json())
       .then((data) => setUpdatedProduct(data),

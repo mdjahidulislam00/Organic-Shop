@@ -4,9 +4,9 @@ import { currentUser } from '../App'
 
 const PrivateRoute = () => {
     const[currentLogInUser, setCurrentLogInUser] = useContext(currentUser);
-    const location = useLocation();
+  const location = useLocation();
   return (
-    currentLogInUser ? <Outlet /> : <Navigate to='/signUp' replace state={{from:location}} />
+    currentLogInUser.email ? <Outlet /> : <Navigate to='/signUp' replace state={{from:location}} />
   )
 }
 

@@ -12,6 +12,7 @@ import { getShoppingCart } from "./SaveAndRetriveDataLocalstorage";
 const Header = () => {
   const [currentLogInUser, setCurrentLogInUser] = useContext(currentUser);
   const [toggleMenu, setToggleMenu] = useState(true);
+  
   //LogOut Hendler
   const handelSignOutUser = () => {
     const auth = getAuth();
@@ -20,12 +21,10 @@ const Header = () => {
         setCurrentLogInUser("");
       })
       .catch((error) => {
+        console.log(error)
         // An error happened.
       });
   };
-  ///get Cart information
-  const cartInfo = getShoppingCart();
-  console.log(cartInfo);
   return (
     <div className="bg-purple-500 sticky top-0 z-10">
       <nav className="w-full shadow-md shadow-gray-500">

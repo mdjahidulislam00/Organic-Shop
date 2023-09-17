@@ -13,6 +13,7 @@ const googleProvider = new GoogleAuthProvider();
 
 const SignUpPage = () => {
   const [CurrentLogInUser, setCurrentLogInUser] = useContext(currentUser);
+  console.log(CurrentLogInUser)
   const [newUser, setNewUser] = useState(false);
   const [userInfo, setUserInfo] = useState({
     name: "",
