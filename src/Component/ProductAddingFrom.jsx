@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import AdminNavBar from "./AdminNavBar";
 
 const ProductAddingFrom = () => {
   const [formData, setFormData] = useState({
@@ -49,6 +50,8 @@ const ProductAddingFrom = () => {
     e.preventDefault(); 
   };
   return (
+    <>
+    <AdminNavBar />
     <div className="max-w-md lg:container  mx-auto bg-white p-8 rounded shadow-md">
       <h2 className="text-3xl font-semibold mb-4 text-center">
         Product Information
@@ -169,6 +172,7 @@ const ProductAddingFrom = () => {
         </div>
       </form>
     </div>
+    </>
   );
 };
 

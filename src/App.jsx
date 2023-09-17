@@ -11,6 +11,8 @@ import PrivateRoute from './Component/PrivateRoute'
 import NoMatchRoute from './Component/NoMatchRoute'
 import { createContext, useState } from 'react'
 import CartPage from './pages/CartPage'
+import ProductAddingFrom from './Component/ProductAddingFrom'
+import AdminProductShow from './Component/AdminProductShow'
 
 export const currentUser = createContext();
 
@@ -25,6 +27,8 @@ const App = () => {
         <Route path="/*" element={ <PrivateRoute />}>
           <Route path="order" element={<CartPage />} />
           <Route path="admin" element={<AdminPage/>} />
+          <Route path="addProduct" element={<ProductAddingFrom />} />
+          <Route path="manageProducts" element={<AdminProductShow />} />
           <Route path="cart" element={<CartPage />} />
         </Route>
         <Route path="/signUp" element={ <SignUpPage/>} />

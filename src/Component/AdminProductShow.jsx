@@ -1,11 +1,12 @@
 import "react";
 import { useEffect, useState } from "react";
+import AdminNavBar from "./AdminNavBar";
+import { ImSpinner3 } from "react-icons/im";
+import spinner from '../assets/images/rainbow-spinner-loading.gif'
 
 const AdminProductShow = () => {
   const [allAdminProducts, setAdminProducts] = useState();
   const [updatedProduct, setUpdatedProduct] = useState();
-  console.log(updatedProduct)
-
 
   //get all Product fetch
   useEffect(()=>{
@@ -20,20 +21,20 @@ const AdminProductShow = () => {
 
   //handel Delete items
    const handelDeleteItem = (event,id) => {
-    console.log(id)
     // //Data Send to server using Express js
     fetch(`http://localhost:5000/deleteProductById/${id}`, {
       method: 'DELETE',
     })
     .then(res => 
-        {res ? event.target.parentNode.parentNode.className='hidden' : console.log(res)}  
+        {res ?  event.target.parentNode.parentNode.className='hidden' && alert('Product Deleted SuccessFully') : console.log(res)}
+          
       )
     .catch(err => console.log(err))
   };
 
     //handel Edit items get from server
      const handelEditItem = (event,id) => {
-      console.log(event.target.parentNode)
+      console.log(event,id)
       fetch(`http://localhost:5000/getProductById/${id}`)
       .then((res) => res.json())
       .then((data) => setUpdatedProduct(data),
@@ -45,24 +46,33 @@ const AdminProductShow = () => {
       const { name, value } = e.target;
       setUpdatedProduct({ ...updatedProduct, [name]: value });
     };
+
   //send user edited from data send to server
-    const handleSubmit = (_id) => {
-       fetch(`http://localhost:5000/updatedProductById/${_id}`, {
+    const handleSubmit = (e) => {
+      console.log(updatedProduct)
+       fetch(`http://localhost:5000/updatedProductById/${updatedProduct._id}`, {
         method: 'PATCH' ,
-        headers: { 'Content-Type': 'application/json',
+        headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify(updatedProduct)
-      }
+      
       })
       .then(res => 
-           console.log(res)  
+          console.log(res)
+             
         )
       .catch(err => console.log(err))
+      
     };
     const handelCancle =(e) =>{
       console.log(e.target.parentNode)
     }
  return (
+      <>
+      <AdminNavBar />
       <div className="container mx-auto p-4">
+        {/* {
+          successMessage &&  <div className="text-3xl font-bold text-center text-green-600">{successMessage}</div>
+        } */}
       <h2 className="text-2xl font-semibold mb-4">Product Management</h2>
       <h2 className="text-3xl font-semibold mb-4">Total-  {allAdminProducts && allAdminProducts.length}</h2>
       {
@@ -70,7 +80,7 @@ const AdminProductShow = () => {
           <div className="fixed inset-0 flex items-center justify-center z-50">
             <div className="bg-white p-6 rounded-lg shadow-md w-full sm:w-96">
               <h2 className="text-2xl font-semibold mb-4">Edit Product</h2>
-              <form onSubmit={handleSubmit(updatedProduct._id)} method="patch">
+              <form onSubmit={handleSubmit} method="patch">
                 <div className="mb-4">
                   <label htmlFor="name" className="block text-sm font-medium text-gray-600">
                     Name
@@ -131,7 +141,7 @@ const AdminProductShow = () => {
                     Submit
                   </button>
                   <button
-                    onClick = {()=> handelCancle(e)}
+                    onClick = {()=> handelCancle}
                     className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 focus:outline-none"
                   >
                     Cancle
@@ -153,7 +163,7 @@ const AdminProductShow = () => {
             </tr>
           </thead>
           <tbody>
-            { allAdminProducts &&
+            { allAdminProducts ?
              allAdminProducts.map((allProduct) => (
               <tr key={allProduct.id}>
                 <td className="border px-4 py-2">{allProduct.category}</td>
@@ -169,11 +179,12 @@ const AdminProductShow = () => {
                   </button>
                 </td>
               </tr>
-            ))}
+             )) : <div className="flex justify-end"> <img className="lg:w-96 lg:h-96" src={spinner} alt="" /> </div>}
           </tbody>
         </table>
       </div>
     </div>
+    </>
   );
 };
 
