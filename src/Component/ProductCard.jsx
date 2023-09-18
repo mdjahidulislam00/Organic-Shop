@@ -3,9 +3,10 @@ import { AiFillStar } from "react-icons/ai";
 import { ImLocation2 } from "react-icons/im";
 import { Link } from "react-router-dom";
 
-const ProductCard = (props) => {
-  const { _id, name, img, price, seller, stock, ratings, ratingsCount } =
-    props.items;
+// eslint-disable-next-line react/prop-types
+const ProductCard = ({items, AddProductToCart}) => {
+  // eslint-disable-next-line react/prop-types
+  const { _id, name, img, price, seller, stock, ratings, ratingsCount } = items;
   return (
     <div className="overflow-hidden border rounded-lg cursor-pointer hover:border hover:border-purple-300 hover:shadow-md hover:shadow-purple-400  duration-300">
       <div className="container mx-auto">
@@ -78,7 +79,7 @@ const ProductCard = (props) => {
         </Link>
         <div className="my-1 mx-2">
           <button
-            onClick={() => props.AddProductToCart(props.items)}
+            onClick={() =>AddProductToCart(items)}
             className="w-full h-10 rounded-lg bg-purple-500 text-white text-md font-semibold hover:bg-purple-700 duration-200"
           >
             Add to Cart

@@ -144,9 +144,9 @@ console.log(formData)
           </label>
           <input
             type="number"
-            id="quantity"
-            name="quantity"
-            value={formData.quantity}
+            id="stock"
+            name="stock"
+            value={formData.stock}
             onChange={handleInputChange}
             className="w-full px-3 py-2 border rounded focus:outline-none focus:border-purple-500"
           />

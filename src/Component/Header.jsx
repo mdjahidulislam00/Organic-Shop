@@ -7,7 +7,6 @@ import { currentUser } from "../App";
 import { getAuth, signOut } from "firebase/auth";
 import { FaGear, FaShop } from "react-icons/fa6";
 import SearchBar from "./SearchBar";
-import { getShoppingCart } from "./SaveAndRetriveDataLocalstorage";
 
 const Header = () => {
   const [currentLogInUser, setCurrentLogInUser] = useContext(currentUser);
@@ -27,7 +26,7 @@ const Header = () => {
   };
   return (
     <div className="bg-purple-500 sticky top-0 z-10">
-      <nav className="w-full shadow-md shadow-gray-500">
+      <nav className="w-full px-3 shadow-md shadow-gray-500">
         <div className="flex items-center justify-between lg:justify-around h-16 lg:h-20">
           <div
             className="flex md:hidden text-gray-300 text-2xl"
@@ -40,7 +39,7 @@ const Header = () => {
             {" "}
             <Link to="/home">ORGANIC-SHOP</Link>{" "}
           </div>
-          <div className="">
+          <div className="hidden lg:flex">
             <SearchBar />
           </div>
           <div className="flex items-center space-x-4 md:space-x-3">
@@ -86,20 +85,20 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="w-full h-16 flex bg-slate-200 px-10">
+        <div className="w-full h-8 lg:h-16 flex bg-slate-200 px-10">
           <div className=" flex space-x-6 items-center">
-           <Link to='/home'> <button className="flex space-x-1 items-center text-xl font-semibold px-2 hover:text-purple-600 duration-100">
+           <Link to='/home'> <button className="flex space-x-1 items-center text-md lg:text-xl font-semibold px-2 hover:text-purple-600 duration-100">
               {" "}
-              <span className="text-purple-500 text-2xl">
+              <span className="text-purple-500 text-xl lg:text-2xl">
                 {" "}
                 <FaHome />{" "}
               </span>{" "}
               <span>Home</span>
             </button></Link>
             <Link to='/shop'>
-            <button className="flex space-x-1 items-center text-xl font-semibold px-2 hover:text-purple-600 duration-100">
+            <button className="flex space-x-1 items-center text-md lg:text-xl font-semibold px-2 hover:text-purple-600 duration-100">
               {" "}
-              <span className="text-purple-500 text-2xl">
+              <span className="text-purple-500 text-xl lg:text-2xl">
                 {" "}
                 <FaShop />{" "}
               </span>{" "}
@@ -107,9 +106,9 @@ const Header = () => {
             </button>
             </Link>
             <Link to='/admin'>
-            <button className="flex space-x-1 items-center text-xl font-semibold px-2 hover:text-purple-600 duration-100">
+            <button className="flex space-x-1 items-center text-md lg:text-xl font-semibold px-2 hover:text-purple-600 duration-100">
               {" "}
-              <span className="text-purple-500 text-2xl">
+              <span className="text-purple-500 text-xl lg:text-2xl">
                 {" "}
                 <FaGear />{" "}
               </span>{" "}
@@ -127,16 +126,16 @@ const Header = () => {
         }
       >
         <Link to="/home">
-          <a href="">Home</a>
+          Home
         </Link>
         <Link to="/shop">
-          <a href="">Shop</a>
+          Shop
         </Link>
         <Link to="/order">
-          <a href="">Orders</a>
+          Orders
         </Link>
         <Link to="/admin">
-          <a href="">Admin</a>
+          Admin
         </Link>
       </div>
     </div>

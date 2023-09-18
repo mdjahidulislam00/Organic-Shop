@@ -178,6 +178,7 @@ const Validation = (userInfo) =>{
                   placeholder="Name"
                   type="text"
                   name="name"
+                  value={userInfo.name}
                   id="name"
                 />
               )}
@@ -188,6 +189,7 @@ const Validation = (userInfo) =>{
                 placeholder="Email"
                 type="email"
                 name="email"
+                value={userInfo.email}
                 id="email"
               />
               <span className="text-sm font-light text-red-500">{validationError.email}</span>
@@ -197,6 +199,7 @@ const Validation = (userInfo) =>{
                 placeholder="Password"
                 type="password"
                 name="password"
+                value={userInfo.password}
                 id="password"
               />
               <span className="text-sm font-light text-red-500">{validationError.password}</span>
