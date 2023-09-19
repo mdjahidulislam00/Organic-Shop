@@ -1,9 +1,11 @@
-import React from 'react'
+import "react"
 import { FaPlusCircle } from 'react-icons/fa'
 import { FaGear } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 
+
 const AdminNavBar = () => {
+ 
   return (
     <nav className="w-full bg-purple-600 p-4 sticky top-20 z-30">
     <div className="container mx-auto flex items-center">

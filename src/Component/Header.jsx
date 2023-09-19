@@ -1,5 +1,5 @@
 import "react";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaBars, FaHome, FaShoppingBag, FaUser } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
 import { Link } from "react-router-dom";
@@ -11,7 +11,7 @@ import SearchBar from "./SearchBar";
 const Header = () => {
   const [currentLogInUser, setCurrentLogInUser] = useContext(currentUser);
   const [toggleMenu, setToggleMenu] = useState(true);
-  
+
   //LogOut Hendler
   const handelSignOutUser = () => {
     const auth = getAuth();
@@ -105,6 +105,7 @@ const Header = () => {
               <span>Shop</span>
             </button>
             </Link>
+           { currentLogInUser.email && 
             <Link to='/admin'>
             <button className="flex space-x-1 items-center text-md lg:text-xl font-semibold px-2 hover:text-purple-600 duration-100">
               {" "}
@@ -115,6 +116,8 @@ const Header = () => {
               <span>Admin</span>
             </button>
             </Link>
+
+           }
           </div>
         </div>
       </nav>

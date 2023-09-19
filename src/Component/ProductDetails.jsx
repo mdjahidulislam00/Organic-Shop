@@ -18,6 +18,9 @@ const ProductDetails = () => {
       });
   }, [id]);
 
+  const handleAddProduct = () => {
+    handleAddToCart(productDetails)
+  }
   return (
     <div className="bg-slate-100 border rounded-lg m-4">
       {productDetails ? (
@@ -68,11 +71,11 @@ const ProductDetails = () => {
                     {productDetails.shipping}
                   </div>
                 </div>
-                <div className="flex justify-around mt-6 lg:mt-12">
-                  <button onClick ={()=> handleAddToCart(productDetails)} className="bg-blue-500 text-xl hover:bg-blue-700 text-white py-2 px-7 lg:px-12 rounded">
+                <div className="flex justify-start space-x-8 mt-6 lg:mt-12">
+                  <button onClick={handleAddProduct} className="bg-blue-500 text-xl text-white py-2 px-7 lg:px-12 rounded hover:bg-blue-700">
                     Add to Cart
                   </button>
-                  <button className="bg-purple-500 text-xl hover:bg-purple-700 text-white py-2 px-7 lg:px-12 rounded">
+                  <button className="bg-purple-500 text-xl text-white py-2 px-7 lg:px-12 rounded hover:bg-purple-700">
                     Buy Now
                   </button>
                 </div>

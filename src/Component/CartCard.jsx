@@ -1,6 +1,8 @@
 import "react";
 
-const CartCard = () => {
+const CartCard = ({cart}) => {
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+  const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
   return (
     <div className="bg-slate-300 my-5 rounded-md p-2">
       <div className="cardbody">
@@ -20,13 +22,13 @@ const CartCard = () => {
             <div className="mt-3 px-2 grid gap-y-4 grid-cols-2">
               {/* Count Items */}
               <div className="text-lg ">Total Items </div>
-              <div className="text-lg text-right font-semibold">01</div>
+              <div className="text-lg text-right font-semibold">{totalItems}</div>
               {/* Count Items */}
               <div className="text-lg ">SubTotal </div>
-              <div className="text-lg text-right font-semibold">$640</div>
+              <div className="text-lg text-right font-semibold">${subtotal}</div>
               {/* Count Items */}
               <div className="text-lg ">Total </div>
-              <div className="text-lg text-right font-semibold">$640</div>
+              <div className="text-lg text-right font-semibold">${subtotal}</div>
             </div>
           </div>
           <div className="cartButton mt-4 mb-1 mx-2">
