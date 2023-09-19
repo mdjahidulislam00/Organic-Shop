@@ -13,7 +13,6 @@ const googleProvider = new GoogleAuthProvider();
 
 const SignUpPage = () => {
   const [CurrentLogInUser, setCurrentLogInUser] = useContext(currentUser);
-  console.log(CurrentLogInUser)
   const [newUser, setNewUser] = useState(false);
   const [userInfo, setUserInfo] = useState({
     name: "",
@@ -22,11 +21,7 @@ const SignUpPage = () => {
     isSignIn: false,
   });
   const [validationError, setValidationError] = useState({})
-  console.log(userInfo);
-  console.log(validationError);
-
   const [firebaseError, setFirebaseError] = useState()
-
   const navigate = useNavigate();
   const location = useLocation();
   const {from} = location.state || {from: {pathname: '/' }}

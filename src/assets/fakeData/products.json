@@ -2,17 +2,17 @@
     {
         "id": 1,
         "name": "Smartphone X",
-        "img": "https://images.pexels.com/photos/887751/pexels-photo-887751.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "img": "https://cdn.pixabay.com/photo/2018/08/23/07/35/thunderstorm-3625405_640.jpg",
         "rating": 4.5,
         "stock": 100,
         "price": 599.99,
         "seller": "TechGadgets Inc.",
-        "description": "The Smartphone X features a high-resolution display, powerful processor, and an advanced camera system for capturing stunning photos and videos."
+        "description":  "The Laptop Pro is a high-performance laptop with a sleek design, fast SSD storage, and a long-lasting battery, perfect for productivity and entertainment."
     },
     {
         "id": 2,
         "name": "Laptop Pro",
-        "img": "https://images.pexels.com/photos/5076531/pexels-photo-5076531.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "img": "https://cdn.pixabay.com/photo/2018/08/21/23/29/forest-3622519_640.jpg",
         "rating": 4.8,
         "stock": 50,
         "price": 1299.99,
@@ -22,7 +22,7 @@
     {
         "id": 3,
         "name": "Smartwatch 3",
-        "img": "https://images.pexels.com/photos/4498483/pexels-photo-4498483.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "img": "https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_640.jpg",
         "rating": 4.2,
         "stock": 75,
         "price": 199.99,
@@ -32,7 +32,7 @@
     {
         "id": 4,
         "name": "Wireless Headphones",
-        "img": "https://images.pexels.com/photos/610945/pexels-photo-610945.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "img": "https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171_640.jpg",
         "rating": 4.6,
         "stock": 120,
         "price": 79.99,
@@ -42,7 +42,7 @@
     {
         "id": 5,
         "name": "HD Television",
-        "img": "https://images.pexels.com/photos/13806260/pexels-photo-13806260.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "img": "https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510_640.jpg",
         "rating": 4.7,
         "stock": 30,
         "price": 699.99,
@@ -52,7 +52,7 @@
     {
         "id": 6,
         "name": "Digital Camera Kit",
-        "img": "https://images.pexels.com/photos/13991768/pexels-photo-13991768.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "img": "https://cdn.pixabay.com/photo/2016/10/20/18/35/earth-1756274_640.jpg",
         "rating": 4.4,
         "stock": 40,
         "price": 499.99,
@@ -62,7 +62,7 @@
     {
         "id": 7,
         "name": "Gaming Console",
-        "img": "https://images.pexels.com/photos/3945654/pexels-photo-3945654.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "img": "https://cdn.pixabay.com/photo/2018/01/04/19/43/love-3061483_640.jpg",
         "rating": 4.9,
         "stock": 25,
         "price": 399.99,
@@ -72,7 +72,7 @@
     {
         "id": 8,
         "name": "Tablet Pro",
-        "img": "https://images.pexels.com/photos/3082341/pexels-photo-3082341.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "img": "https://cdn.pixabay.com/photo/2018/04/05/14/09/sunflowers-3292932_640.jpg",
         "rating": 4.6,
         "stock": 60,
         "price": 349.99,
@@ -82,7 +82,7 @@
     {
         "id": 9,
         "name": "Wireless Router",
-        "img": "https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "img": "https://cdn.pixabay.com/photo/2014/11/21/03/24/mountains-540115_640.jpg",
         "rating": 4.3,
         "stock": 80,
         "price": 89.99,
@@ -92,7 +92,7 @@
     {
         "id": 10,
         "name": "Fitness Tracker",
-        "img": "https://images.pexels.com/photos/437036/pexels-photo-437036.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "img": "https://cdn.pixabay.com/photo/2017/10/10/07/48/hills-2836301_640.jpg",
         "rating": 4.1,
         "stock": 90,
         "price": 59.99,

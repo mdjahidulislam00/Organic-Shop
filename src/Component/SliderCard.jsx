@@ -7,7 +7,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 const SliderCard = ({ imgData }) => {
-  console.log(imgData)
   return (
     <div className="w-full">
       <div className="container mx-auto mt-3 rounded-lg ">
@@ -15,22 +14,29 @@ const SliderCard = ({ imgData }) => {
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 2500,
+          delay: 20000,
           disableOnInteraction: false,
         }}
         pagination={{
           clickable: true,
         }}
         navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={[ Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
                   {
-            imgData.map((pic)=>( 
-            <SwiperSlide key={pic.id}>
-              <div className="">
-                <img className="object-cover h-[500px] w-full" src={pic.img} alt={pic.name} />
+            imgData.map((product)=>( 
+            <SwiperSlide key={product.id}>
+              <div className=" mx-auto rounded-lg overflow-hidden shadow-lg bg-white relative">
+              <img src={product.img} alt={product.name} className="w-full object-fit h-[450px]" />
+              <div className="absolute top-0 bottom-0 left-0 right-0 w-full  p-4">
+                <div className="decription text-center mt-48">
+                <p className="font-bold text-5xl pb-5 text-purple-500">{product.name}</p>
+                <p className="text-red-700 pb-5 text-3xl font-bold mt-2">${product.price}</p>
+                <p className="text-sky-400 bg-black rounded-lg bg-opacity-40 py-2 text-xl">{product.description}</p>
+                </div>
               </div>
+            </div>
             </SwiperSlide> ))
           }
       </Swiper>

@@ -53,9 +53,9 @@ console.log(formData)
   return (
     <>
     <AdminNavBar />
-    <div className="max-w-md lg:container  mx-auto bg-white p-8 rounded shadow-md">
-      <h2 className="text-3xl font-semibold mb-4 text-center">
-        Product Information
+    <div className="max-w-md lg:container  mx-auto bg-white m-10 p-10 border-2 border-gray-200 rounded-lg shadow-md">
+      <h2 className="text-3xl font-semibold mb-6 text-center">
+        Product Adding From 
       </h2>
       {successMessage && (
           <div className="text-4xl my-8 text-green-600 text-center">{successMessage}</div>
@@ -147,6 +147,22 @@ console.log(formData)
             id="stock"
             name="stock"
             value={formData.stock}
+            onChange={handleInputChange}
+            className="w-full px-3 py-2 border rounded focus:outline-none focus:border-purple-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            htmlFor="name"
+            className="block text-gray-700 text-sm font-medium mb-2"
+          >
+            Description
+          </label>
+          <input
+            type="text"
+            id="Description"
+            name="Description"
+            value={formData.Description}
             onChange={handleInputChange}
             className="w-full px-3 py-2 border rounded focus:outline-none focus:border-purple-500"
           />

@@ -13,6 +13,7 @@ import { createContext, useState } from 'react'
 import CartPage from './pages/CartPage'
 import ProductAddingFrom from './Component/ProductAddingFrom'
 import AdminProductShow from './Component/AdminProductShow'
+import CategoryPage from './pages/CategoryPage'
 
 export const currentUser = createContext();
 
@@ -24,6 +25,7 @@ const App = () => {
       <Routes>
         <Route path="*" element={ <HomePage/>} />
         <Route path="/shop" element={<Shop/>} />
+        <Route path="/category" element={<CategoryPage/>} />
         <Route path="/*" element={ <PrivateRoute />}>
           <Route path="order" element={<CartPage />} />
           <Route path="admin" element={<AdminPage/>} />
