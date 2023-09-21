@@ -1,11 +1,14 @@
-import "react";
+import { useNavigate } from "react-router-dom";
 
-const CartCard = ({cart}) => {
-  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-  const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  //hanlde Order Confirm 
-  const handleComfirmOrder =()=>{
-    console.log("click to confirm order")
+
+const CartCard = (props) => {
+  const navigate = useNavigate();
+  const totalItems = props.cart.reduce((total, item) => total + item.quantity, 0);
+  const subtotal = props.cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  
+  const handleConfirmOrder = () => {
+    navigate('placeOrder')
+    console.log()
   }
   return (
     <div className="bg-slate-300 my-5 rounded-md p-2">
@@ -36,7 +39,7 @@ const CartCard = ({cart}) => {
             </div>
           </div>
           <div className="cartButton mt-4 mb-1 mx-2">
-            <button onClick={()=>handleComfirmOrder()} className="w-full rounded-md bg-purple-500 text-white text-lg py-3 hover:bg-purple-600 delay-150">Confirm Order</button>
+            <button onClick={()=>handleConfirmOrder()} className="w-full rounded-md bg-purple-500 text-white text-lg py-3 hover:bg-purple-600 delay-150">Confirm Order</button>
           </div>
         </div>
       </div>

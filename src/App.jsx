@@ -14,6 +14,7 @@ import CartPage from './pages/CartPage'
 import ProductAddingFrom from './Component/ProductAddingFrom'
 import AdminProductShow from './Component/AdminProductShow'
 import CategoryPage from './pages/CategoryPage'
+import PlaceOrderPage from './pages/PlaceOrderPage'
 
 export const currentUser = createContext();
 
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="addProduct" element={<ProductAddingFrom />} />
           <Route path="manageProducts" element={<AdminProductShow />} />
           <Route path="cart" element={<CartPage />} />
+          <Route path="cart/placeOrder" element={<PlaceOrderPage />} />
         </Route>
         <Route path="/signUp" element={ <SignUpPage/>} />
         <Route path="/productDetails/:id" element={ <ProductDetails/>} />

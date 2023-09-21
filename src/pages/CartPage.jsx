@@ -14,6 +14,7 @@ const CartPage = () => {
     }
   }, []);
 
+
   const increaseQuantity = (productId) => {
     const updatedCart = cart.map((item) => {
       if (item._id === productId) {
