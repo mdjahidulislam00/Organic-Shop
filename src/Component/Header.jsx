@@ -1,6 +1,6 @@
 import "react";
-import { useContext, useEffect, useState } from "react";
-import { FaCar, FaHome, FaJediOrder, FaList, FaShoppingBasket, FaShoppingCart, FaTruck, FaUser } from "react-icons/fa";
+import { useContext } from "react";
+import {  FaHome,  FaList,  FaUser } from "react-icons/fa";
 import { AiOutlineShoppingCart} from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { currentUser } from "../App";
@@ -112,32 +112,6 @@ const Header = () => {
               <span>Category</span>
             </button>
             </Link>
-            { currentLogInUser.email && 
-            
-            <Link to='/admin'>
-            <button className="flex space-x-1 items-center text-md lg:text-xl  px-2 hover:text-purple-600 duration-100">
-              {" "}
-              <span className="text-purple-500 text-lg lg:text-xl">
-                {" "}
-                <FaShoppingCart />{" "}
-              </span>{" "}
-              <span>Order</span>
-            </button>
-            </Link>
-           }
-           { currentLogInUser.email && 
-            
-            <Link to='/admin'>
-            <button className="flex space-x-1 items-center text-md lg:text-xl px-2 hover:text-purple-600 duration-100">
-              {" "}
-              <span className="text-purple-500 text-lg lg:text-xl">
-                {" "}
-                <FaTruck />{" "}
-              </span>{" "}
-              <span>Delivery Address</span>
-            </button>
-            </Link>
-           }
            { currentLogInUser.email && 
             
             <Link to='/admin'>

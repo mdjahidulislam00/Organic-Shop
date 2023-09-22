@@ -40,7 +40,6 @@ const SignUpPage = () => {
         createUserWithEmailAndPassword (auth, userInfo.email, userInfo.password)
         .then( res => {
             const user = res.user;
-            console.log(user);
             setCurrentLogInUser(user)
             navigate(from)
         })
@@ -125,7 +124,6 @@ signInWithPopup(auth, facebookProvider)
 
 useEffect(() => {
     if(Object.keys(validationError).length === 0){
-        console.log(userInfo)
         userInfo.isSignIn = true;
     }
 },[validationError])
