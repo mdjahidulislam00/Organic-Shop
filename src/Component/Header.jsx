@@ -11,9 +11,11 @@ import SearchBar from "./SearchBar";
 const Header = () => {
   const [currentLogInUser, setCurrentLogInUser] = useContext(currentUser);
   // const [toggleMenu, setToggleMenu] = useState(true);
-
+  
+  const currentLogInUserlocal = localStorage.getItem('currentLogInUserEmail');
   //LogOut Hendler
   const handelSignOutUser = () => {
+    localStorage.removeItem('currentLogInUserEmail');
     const auth = getAuth();
     signOut(auth)
       .then(() => {
@@ -50,7 +52,7 @@ const Header = () => {
               </Link>
             </div>
             <div className="text-white flex cursor-pointer hover:text-gray-300">
-              {!currentLogInUser.email ? (
+              {!currentLogInUser.email && !currentLogInUserlocal ? (
                 <Link to="/signUp">
                   <div className="flex">
                     <span className="text-2xl"><FaUser /></span>
@@ -112,7 +114,7 @@ const Header = () => {
               <span>Category</span>
             </button>
             </Link>
-           { currentLogInUser.email && 
+           { currentLogInUser.email || currentLogInUserlocal && 
             
             <Link to='/admin'>
             <button className="flex space-x-1 items-center text-md lg:text-xl  px-2 hover:text-purple-600 duration-100">

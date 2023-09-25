@@ -1,7 +1,5 @@
 import "react";
 import AdminProductShow from "../Component/AdminProductShow";
-import { useState } from "react";
-import AdminNavBar from "../Component/AdminNavBar";
 
 const AdminPage = () => {
   return (

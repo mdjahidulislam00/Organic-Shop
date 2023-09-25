@@ -7,12 +7,12 @@ const PlaceOrderPage = () => {
 
   const [userOrder, setUserOrder] = useState({});
   console.log(userOrder)
-  const order = userOrder.orders || []; // Initialize order as an empty array
+  const order = userOrder.orders || []; 
   console.log(order)
   const totalItems = order.reduce((total, item) => total + item.quantity, 0);
   const subtotal = order.reduce((total, item) => total + item.price * item.quantity, 0);
   const Email = userOrder.email;
-  const orderId = userOrder._id; // Retrieve the order ID
+  const orderId = userOrder._id; 
 
   useEffect(() => {
     fetch(`http://localhost:5000/getProductByEmail/${userEmail}`)

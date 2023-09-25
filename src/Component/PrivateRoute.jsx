@@ -6,9 +6,10 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 const PrivateRoute = () => {
   const[currentLogInUser, setCurrentLogInUser] = useContext(currentUser);
   const location = useLocation();
-
+  const localUser = localStorage.getItem('currentLogInUserEmail');
   return (
-    currentLogInUser.email ? <Outlet /> : <Navigate to='/signUp' replace state={{from:location}} />
+    
+     localUser ? <Outlet /> : <Navigate to='/signUp' replace state={{from:location}} />
   )
 }
 

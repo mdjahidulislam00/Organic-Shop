@@ -5,6 +5,7 @@ import firebaseConfig from "../Component/FireBaseConfig";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
 import { currentUser } from "../App";
 import { useLocation, useNavigate } from "react-router-dom";
+import { stringify } from "postcss";
 
 
 const app = initializeApp(firebaseConfig);
@@ -34,7 +35,7 @@ const SignUpPage = () => {
   //Handel Submit
   const handelSubmit =(e) =>{
     setValidationError(Validation(userInfo));
-
+   
     if(newUser && userInfo.name && userInfo.email && userInfo.password ){
         const auth = getAuth (app);
         createUserWithEmailAndPassword (auth, userInfo.email, userInfo.password)
@@ -54,7 +55,9 @@ const SignUpPage = () => {
         signInWithEmailAndPassword(auth, userInfo.email, userInfo.password)
         .then((res) => {
             const user = res.user;
+            const userEmail = user.email;
             setCurrentLogInUser(user)
+            localStorage.setItem('currentLogInUserEmail', userEmail )
             navigate(from)
         })
         .catch((error) => {
@@ -146,7 +149,7 @@ const Validation = (userInfo) =>{
         userError.password ='password is required!';
     }
     else if(userInfo.password.length < 6){
-        userError.password = 'password must be 4 digits';
+        userError.password = 'password must be 6 digits';
     }
     else if(userInfo.password.length > 10){
         userError.password = 'password should not more than 10 digits';
